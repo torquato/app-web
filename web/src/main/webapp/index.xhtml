@@ -4,11 +4,15 @@
     xmlns:p="http://primefaces.org/ui">  
     <h:head>  
     </h:head>  
-    <h:body>  
+    <h:body>   
         <p:spinner />  
-        
         <h:form>
-        	<p:commandButton action="#{usuarioMB.ola()}"></p:commandButton>
+        	<h:outputText value="#{usuarioMB.ola}" />
+        	<p:commandButton action="#{usuarioMB.digaOla()}" value="Olá" update="@form"></p:commandButton>
+        	<p:commandButton value="Limpar" action="#{usuarioMB.limpar()}" update="@form">
+
+        	</p:commandButton>
         </h:form>
+        
     </h:body>  
 </html>  
