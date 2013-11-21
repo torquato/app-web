@@ -9,6 +9,8 @@
          http://www.springframework.org/schema/tx 
          http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
+    <import resource="classpath:/conf/spring-security.xml"/>
+
 	<context:annotation-config />
 
 	<context:component-scan base-package="br.com.tor4neto"></context:component-scan>
