@@ -1,7 +1,16 @@
 <?xml version="1.0"?>
-<faces-config version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<faces-config version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_1.xsd">
 	<application>
+		<locale-config>
+			<default-locale>pt_BR</default-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>br.com.tor4neto.resources</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+		<message-bundle>br.com.tor4neto.resources</message-bundle>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
 </faces-config>
