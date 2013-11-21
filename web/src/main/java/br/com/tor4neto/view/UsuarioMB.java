@@ -1,6 +1,5 @@
 package br.com.tor4neto.view;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +7,16 @@ import org.springframework.stereotype.Controller;
 
 import br.com.tor4neto.service.EstudanteServiceImpl;
 
-@Controller
-@ManagedBean
+
+
+
+//@Scope("session")
+//@KeepAlive(ajaxOnly = true)
+//@Component("comunicadosVisao")
+
+
+//@ManagedBean
+@Controller("usuarioMB")
 @ViewScoped
 public class UsuarioMB {
 
