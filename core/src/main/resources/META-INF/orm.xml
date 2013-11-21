@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+
+	<named-query name="uf.findByOrderBy">
+		<query>
+           SELECT u
+             FROM Uf AS u
+            WHERE stRegistroAtivo = 'S'
+            ORDER BY u.sgUf
+        </query>
+	</named-query>
+
+	<named-query name="municipio.findByUfOrderBy">
+		<query>
+           SELECT m
+             FROM Municipio AS m
+             where m.uf.coUfIbge = ?
+            ORDER BY m.noMunicipioAcentuado
+        </query>
+	</named-query>
+
+	<named-query name="uf.findBySigla">
+		<query>
+           SELECT u
+             FROM Uf AS u
+            WHERE u.sgUf = ?
+              and u.stRegistroAtivo = 'S'
+        </query>
+	</named-query>
+
+	<named-query name="pais.findPorIdsOrderBy">
+		<query>
+         SELECT p FROM Pais p 
+            WHERE p.coSeqPais IN(:listaCodigos)  
+            ORDER BY p.noPais
+        </query>
+	</named-query>
+
+	<named-query name="municipio.findPorIdsOrderBy">
+		<query>
+           SELECT m 
+             FROM Municipio AS m 
+            WHERE 
+              m.stRegistroAtivo = 'S' AND m.coMunicipioIbge IN(:listaCodigos) AND m.uf.coUfIbge = (:codigoUf) AND m.regionalSaude.codigoRegionalSaude  = (:codigoRegionalSaude)
+            ORDER BY m.noMunicipioAcentuado
+        </query>
+	</named-query>
+
+
+
+	<named-query name="regionalSaude.findPorIdsOrderBy">
+		<query>
+           SELECT r 
+             FROM RegionalSaude AS r 
+            WHERE 
+              r.stRegistroAtivo = 'S' AND  r.codigoRegionalSaude  IN (:listaCodigos) AND r.uf.coUfIbge = (:codigoUf)
+            ORDER BY r.nome
+        </query>
+	</named-query>
+
+	<named-query name="uf.findPorIdsOrderBy">
+		<query>
+		 SELECT u 
+             FROM Uf AS u 
+            WHERE u.stRegistroAtivo = 'S' AND u.coUfIbge IN(:listaCodigos) AND u.pais.coSeqPais=(:codigoPais)
+            ORDER BY u.noUf 
+        </query>
+	</named-query>
+	
+	<named-query name="municipio.findPorUfOrderBy">
+        <query>
+           SELECT m 
+             FROM Municipio AS m 
+            WHERE 
+              m.stRegistroAtivo = 'S' AND m.uf.coUfIbge=(:codigoUf)
+              AND m.statusMunicipio != 'IGNR'
+            ORDER BY m.noMunicipioAcentuado
+        </query>
+    </named-query>
+    
+    <named-query name="estabelecimento.findPorIdsOrderBy">
+		<query>
+           SELECT e 
+             FROM Estabelecimento AS e 
+            WHERE 
+              e.situacaoRegistroAtivo = 'S' AND e.codigoCnes IN(:listaCodigos) AND e.coMunicipioGestor = (:codigoMunicipio)
+            ORDER BY CASE WHEN e.tipoPfpj = '1' THEN e.razaoSocial ELSE e.nomeFantasia END
+        </query>
+	</named-query>
+
+</entity-mappings>
