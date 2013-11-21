@@ -5,7 +5,6 @@
 	version="2.5">
 	<display-name>app-web</display-name>
 
-<!-- teste -->
 	<!-- Parâmetros de contexto -->
 	<context-param>
 		<param-name>timezone</param-name>
