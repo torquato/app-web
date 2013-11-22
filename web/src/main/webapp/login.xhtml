@@ -3,24 +3,30 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
+<!-- 	<link href="/resources/bootstrap/css/bootstrap.min.css" -->
+<!-- 		rel="stylesheet" media="screen"></link> -->
+ <style type="text/css">
+.ui-widget {  
+   font-size: 11px !important;  
+}
+</style>
+
 </h:head>
 <h:body>
+	
 	<h:form>
-		<p:fieldset legend="Login">
-			<h:inputText value="#{loginMB.user}" />
-			<h:inputSecret value="#{loginMB.password}" />
-			<p:commandButton action="#{loginMB.login()}" value="Logar"
-				update="@form"></p:commandButton>
+		<p:inputText value="#{loginMB.user}" />
+		<p:password value="#{loginMB.password}" />
+		<p:commandButton action="#{loginMB.login()}" value="Logar" 
+			update="@form"></p:commandButton>
 
-			<a href="#{facesContext.externalContext.requestContextPath}/logout"
-				onclick="if (confirm('Deseja sair do sistema? Os dados não salvos serão perdidos.')){return true;}else{return false;}"
-				title="Sair">
-				<h:outputText value="Sair" />
-			</a>
-		</p:fieldset>
-
-
-		<a href="/view/protegido.xhtml" >protegido</a>
+		<br/>
+		<a href="#{facesContext.externalContext.requestContextPath}/logout"
+			onclick="if (confirm('Deseja sair do sistema? Os dados não salvos serão perdidos.')){return true;}else{return false;}"
+			title="Sair"> <h:outputText value="Sair" />
+		</a>
+<br/>
+		<a href="/view/protegido.xhtml">protegido</a>
 	</h:form>
 </h:body>
 </html>
